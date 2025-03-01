@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: black; /* Изменено на черный для лучшей читаемости */
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid black; /* Изменено на черный для лучшей читаемости */
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #28a745;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const tableBody = document.querySelector('tbody');
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>
+                        <input type="number" value="${item.quantity}" min="1" id="quantity-${index}" style="width: 50px;" onchange="updateQuantity(${index})">
+                    </td>
+                    <td>${item.price} ₽</td>
+                    <td>${item.quantity * item.price} ₽</td>
+                    <td><button onclick="removeFromCart(${index})">Удалить</button></td>
+                `;
+                total += item.quantity * item.price;
+                tableBody.appendChild(row);
+            });
+
+            let totalRow = document.createElement('tr');
+            totalRow.innerHTML = `<td colspan="3">Общая сумма</td><td>${total} ₽</td><td></td>`;
+            tableBody.appendChild(totalRow);
+        };
+
+        function updateQuantity(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let newQuantity = document.getElementById(`quantity-${index}`).value;
+            cart[index].quantity = parseInt(newQuantity);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            location.reload(); // Перезагружаем страницу, чтобы обновить сумму
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Удаляем товар из корзины
+            localStorage.setItem('cart', JSON.stringify(cart));
+            location.reload(); // Перезагружаем страницу, чтобы обновить корзину
+        }
+        function sendOrderReport() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Корзина пуста!');
+                return;
+            }
+            // Перенаправляем на страницу отчета
+            window.location.href = 'otchet.htm';
+    }
+    </script>
+</head>
+<body>
+    <h1>Корзина</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название товара</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Итого</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Содержимое корзины будет добавлено здесь через JavaScript -->
+        </tbody>
+    </table>
+    <br>
+    <a href="#" onclick="sendOrderReport()"><button>отправить отчет</button></a>
+
+    <a href="main 2.htm"><button>Вернуться в магазин</button></a>
+</body>
+</html>

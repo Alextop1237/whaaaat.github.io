@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Крутящаяся кнопка</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Занимает всю высоту окна */
+            background-color: #f0f0f0; /* Светлый фон */
+            margin: 0;
+        }
+
+        .rotate-button {
+            padding: 15px 30px; /* Отступы для кнопки */
+            font-size: 20px; /* Размер шрифта */
+            color: white; /* Цвет текста */
+            background-color: #007BFF; /* Цвет фона кнопки */
+            border: none; /* Убираем границу */
+            border-radius: 5px; /* Закругленные углы */
+            cursor: pointer; /* Курсор в виде указателя */
+            transition: transform 0.5s; /* Плавный переход для поворота */
+        }
+
+        .rotate-button:hover {
+            transform: rotate(360deg); /* Поворот на 360 градусов при наведении */
+        }
+    </style>
+</head>
+<body>
+    <button class="rotate-button">Наведите на меня!</button>
+</body>
+</html>

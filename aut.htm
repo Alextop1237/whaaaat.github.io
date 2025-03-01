@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация и Вход</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 94.5%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .toggle-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Регистрация</h2>
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="regUsername">Имя пользователя</label>
+            <input type="text" id="regUsername" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="regPassword">Пароль</label>
+            <input type="password" id="regPassword" name="password" required>
+        </div>
+        <button type="submit">Зарегистрироваться</button>
+        <div class="toggle-link">
+            <a href="#" onclick="toggleForms()">Уже есть аккаунт? Войти</a>
+        </div>
+    </form>
+</div>
+
+<div class="container" style="display: none;" id="loginContainer">
+    <h2>Вход</h2>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="loginUsername">Имя пользователя</label>
+            <input type="text" id="loginUsername" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="loginPassword">Пароль</label>
+            <input type="password" id="loginPassword" name="password" required>
+        </div>
+        <button type="submit">Войти</button>
+        <div class="toggle-link">
+            <a href="#" onclick="toggleForms()">Нет аккаунта? Зарегистрироваться</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function toggleForms() {
+        const registrationForm = document.getElementById('registrationForm').parentNode;
+        const loginContainer = document.getElementById('loginContainer');
+        
+        if (registrationForm.style.display === 'none') {
+            registrationForm.style.display = 'block';
+            loginContainer.style.display = 'none';
+        } else {
+            registrationForm.style.display = 'none';
+            loginContainer.style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>

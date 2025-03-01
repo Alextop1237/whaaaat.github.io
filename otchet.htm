@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчет по заказу</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: black;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>Отчет по заказу</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название товара</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Итого</th>
+            </tr>
+        </thead>
+        <tbody id="orderTableBody">
+            <!-- Данные заказа будут добавлены здесь через JavaScript -->
+        </tbody>
+    </table>
+    <br>
+    <h2>Статус заказа: <span id="orderStatus">В обработке</span></h2>
+    <a href="main 2.htm"><button>Вернуться в магазин</button></a>
+
+    <script>
+        window.onload = function() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const tableBody = document.getElementById('orderTableBody');
+            let total = 0;
+
+            cart.forEach(item => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.price} ₽</td>
+                    <td>${item.quantity * item.price} ₽</td>
+                `;
+                total += item.quantity * item.price;
+                tableBody.appendChild(row);
+            });
+
+            let totalRow = document.createElement('tr');
+            totalRow.innerHTML = `<td colspan="3">Общая сумма</td><td>${total} ₽</td>`;
+            tableBody.appendChild(totalRow);
+        };
+    </script>
+</body>
+</html>

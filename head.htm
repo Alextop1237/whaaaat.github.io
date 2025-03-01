@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин продуктов</title>
+    <style>
+        body {
+            background-color: #001cd3;
+            color: white;
+            padding: 0; /* Убираем отступы */
+            margin: 0;
+            display: flex;
+            align-items: center; /* Центрируем по вертикали */
+            justify-content: flex-start; /* Содержимое выравнивается по левому краю */
+            height: 100vh; /* Высота 100% экрана */
+        }
+        marquee {
+            width: 150%;
+            white-space: nowrap;
+        }
+        .content {
+            text-align: center;
+            margin-left: 100px; /* Сдвигаем содержимое вправо */
+        }
+        .frame {
+            width: 300px; /* Ширина фрейма */
+            height: 100vh; /* Высота фрейма */
+            border: none; /* Убираем рамку */
+            position: absolute; /* Позволяет фрейму находиться справа */
+            right: 0; /* Привязываем фрейм к правой стороне */
+            top: 0; /* Привязываем фрейм к верхней стороне */
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1 style="margin-left: 875px;">Магазин продуктов</h1> <!-- Сдвигаем заголовок вправо -->
+    </div>
+    <iframe class="frame" name="rightFrame" src="right.htm"></iframe>
+</body>
+</html>

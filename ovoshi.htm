@@ -1,0 +1,46 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин Овощей</title>
+    <script>
+        function addToCart(productName, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let productIndex = cart.findIndex(item => item.name === productName);
+
+            if (productIndex > -1) {
+                cart[productIndex].quantity += 1; // Увеличиваем количество, если товар уже есть в корзине
+            } else {
+                cart.push({ name: productName, quantity: 1, price: price }); // Добавляем новый товар
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart)); // Сохраняем корзину в локальном хранилище
+            alert(`${productName} добавлен в корзину!`); // Уведомление о добавлении
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div align=center><h2>Овощи:</h2>
+
+    <div class="product">
+        <h3>Помидоры</h3>
+        <img src="помидоры.jpg" width="500" alt="Помидоры">
+        <p>Цена: 100 руб./кг</p>
+        <button onclick="addToCart('Помидоры', 100)">Купить</button>
+    </div>
+    <div class="product">
+        <h3>Картофель</h3>
+        <img src="Картошка.jpeg" width="500" alt="Картофель">
+        <p>Цена: 50 руб./кг</p>
+        <button onclick="addToCart('Картофель', 50)">Купить</button>
+    </div>
+    <div class="product">
+        <h3>Морковь</h3>
+        <img src="морковь.jpeg" width="500" alt="Морковь">
+        <p>Цена: 70 руб./кг</p>
+        <button onclick="addToCart('Морковь', 70)">Купить</button>
+    </div>
+</div>
+</div> 
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История заказов</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: black;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>История заказов</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название товара</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Итого</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody id="historyTableBody">
+            <!-- Данные истории заказов будут добавлены здесь через JavaScript -->
+        </tbody>
+    </table>
+    <br>
+    <a href="main 2.htm"><button>Вернуться в магазин</button></a>
+
+    <script>
+        window.onload = function() {
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const tableBody = document.getElementById('historyTableBody');
+
+            if (orders.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5">Нет заказов</td></tr>';
+                return;
+            }
+
+            orders.forEach(order => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.name}</td>
+                    <td>${order.quantity}</td>
+                    <td>${order.price} ₽</td>
+                    <td>${order.quantity * order.price} ₽</td>
+                    <td>${order.status}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        };
+    </script>
+</body>
+</html>
+

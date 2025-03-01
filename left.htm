@@ -1,0 +1,44 @@
+<!--Чтобы тег `<marquee>` растянулся от конца до начала страницы, вы можете использовать атрибуты `width` и `style`. Вот пример кода, который демонстрирует, как это сделать:
+
+```html-->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marquee Пример</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Скрыть полосу прокрутки */
+            background-color: black;
+        }
+        marquee {
+            width: 100%; /* Ширина на 100% */
+            white-space: nowrap; /* Запрет на перенос строк */
+        }
+        div{color:white;
+        font-size: 20px;}
+        div:hover{
+        background-color: yellow;
+    font-size: 21px;}
+    </style>
+</head>
+<body link="green", vlink="red">
+    <marquee behavior="scroll" direction="left" style="color: white; background-color: blue; font-size: 24px;">
+        категории продуктов:
+    </marquee>
+    <div align="center"><a href="main 2.htm" target="MainFrame"><h2>На главную</h2></a></div>
+    <div align="center"><a href="hleb.htm" target="MainFrame"><h2>Булочки</h2></a></div>
+    <div align="center"><a href="ovoshi.htm" target="MainFrame"><h2>Овощи</h2></a></div>
+    <div align="center"><a href="frut.htm" target="MainFrame"><h2>Фрукты</h2></a></div>
+    <div align="center"><a href="drink.htm" target="MainFrame"><h2>Напитки</h2></a></div>
+</body>
+</html>
+<!--### Объяснение:
+- **width: 100%;** — устанавливает ширину элемента `<marquee>` на 100% от ширины окна браузера.
+- **white-space: nowrap;** — предотвращает перенос текста на новую строку, что позволяет тексту двигаться плавно.
+- **behavior="scroll" direction="left"** — задает поведение маркера, чтобы текст двигался слева направо.
+
+Скопируйте этот код в файл с расширением `.html`, откройте его в веб-браузере, и вы увидите текст, который движется от конца до начала страницы! 😊-->
